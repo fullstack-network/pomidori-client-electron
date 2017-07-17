@@ -1,12 +1,16 @@
 import blinkstick from 'blinkstick'
 import PomidoriClient from '../../api/pomidoriClient';
 
-function turnOnLight(minutes) {
+function turnOnLight(minutes, workingState) {
   return function(dispatch) {
     const device = blinkstick.findFirst();
     const client = new PomidoriClient();
+    let color = 'red';
 
-    console.log("device is: " + device)
+    if (workingState === "break") {
+      color = 'green';
+      
+    }
 
     // TODO: Warn the user that the device is not connected
     if (device) {
@@ -29,19 +33,19 @@ function turnOnLight(minutes) {
           console.log("End the task on the server")
         }
 
-        device.setColor("red", {'channel':0, 'index': i}, function() {
+        device.setColor(color, {'channel':0, 'index': i}, function() {
+
         })
 
         yield i + 1;
       }
 
       var setColor = function () {
-          console.log(index);
-          index  = startStopTaskLeds(index).next().value;
+        index  = startStopTaskLeds(index).next().value;
 
-          if (index <= ledCount) {
-            setTimeout(setColor, interval);
-          }
+        if (index <= ledCount) {
+          setTimeout(setColor, interval);
+        }
       }
 
       //You need to set mode only once. Run the code below if you haven't already set

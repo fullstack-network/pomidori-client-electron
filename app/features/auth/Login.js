@@ -43,7 +43,7 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className="padded-more">
         <div className="logoContainer">
           <img src="features/auth/assets/logo.png" className="logo" />
         </div>
@@ -59,7 +59,7 @@ export default class Login extends Component {
               onClick={::this.handleLogin}
               className="btn btn-form btn-primary loginButton">{ this.state.loginMessage }</button>
           </div>
-          <div className="form-actions createAccount">
+          <div className="form-actions create-account">
             <p className="title">
               <a href="#" onClick={ ::this.handleStateChange }>{ this.state.registerMessage }</a>
             </p>

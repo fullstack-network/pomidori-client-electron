@@ -8,8 +8,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => { // eslint-disable-line no-unused-vars
   return {
-    turnOnLight: (minutes) => {
-      dispatch(turnOnLight(minutes));
+    turnOnLight: (minutes, workingState) => {
+      dispatch(turnOnLight(minutes, workingState));
     }
   };
 };
