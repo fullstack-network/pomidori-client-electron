@@ -44,11 +44,12 @@ app.on('ready', async () => {
   }
 
   mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 800,
-    minWidth: 640,
-    minHeight: 480,
-    show: false
+    width: 400,
+    height: 450,
+    minWidth: 400,
+    minHeight: 450,
+    show: false,
+    icon: path.join(__dirname, 'assets/icon/64x64.png'),
   });
 
   mainWindow.loadURL(url.format({

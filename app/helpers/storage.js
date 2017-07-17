@@ -14,14 +14,22 @@ export default class Storage {
     }
   }
 
+  getFilePath() {
+    return path.join(this.path, 'authToken');
+  }
+
   storeToken(token) {
-    const filePath = path.join(this.path, 'authToken');
-    console.log(filePath);
+    const filePath = this.getFilePath();
 
     fs.writeFile(filePath, token, (err) => {
       if (err) {
         console.log("Had an error writing to the file")
       }
     });
+  }
+
+  getToken() {
+    const filePath = this.getFilePath();
+    return fs.readFileSync(filePath, 'utf-8')
   }
 }

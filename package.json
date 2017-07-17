@@ -11,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "babel-runtime": "^6.22.0",
+    "blinkstick": "^1.1.3",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.2",
@@ -33,7 +34,7 @@
     "browser-sync": "^2.9.3",
     "chai": "^3.4.1",
     "electron": "^1.5.0",
-    "electron-builder": "^13.8.2",
+    "electron-builder": "^19.16.0",
     "electron-devtools-installer": "^2.1.0",
     "eslint": "^3.14.1",
     "eslint-plugin-react": "^6.9.0",

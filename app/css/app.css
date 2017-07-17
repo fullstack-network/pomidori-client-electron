@@ -1,0 +1,27 @@
+.loginButton {
+  width: 100%;
+  height: 35px
+}
+
+.window {
+  background-color: #fcfcfc
+
+}
+
+.logoContainer {
+  text-align: center;
+}
+
+.logo {
+  width: 150px
+
+}
+
+.createAccount {
+  padding-top: 10px
+
+}
+
+.padded-more {
+  width: 100%
+}

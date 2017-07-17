@@ -1,9 +1,36 @@
 import React, { Component, PropTypes } from 'react';
 
 export default class Login extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      loginMessage: "LOGIN",
+      registerMessage: "OR create an account",
+      loginState: "login",
+    }
+  }
+
   static propTypes = {
     onLogin: PropTypes.func.isRequired
   };
+
+  handleStateChange() {
+    if (this.state.loginState === "login") {
+      this.setState({
+        loginMessage: "REGISTER",
+        registerMessage: "back to login",
+        loginState: "register",
+      })
+      return
+    }
+
+    this.setState({
+      loginMessage: "LOGIN",
+      registerMessage: "OR create an account",
+      loginState: "login"
+    })
+  }
 
   handleLogin() {
     const { onLogin } = this.props;
@@ -11,27 +38,31 @@ export default class Login extends Component {
     const email = this.refs.email.value;
     const password = this.refs.password.value;
 
-    onLogin(email, password);
+    onLogin(email, password, this.state.loginState);
   }
 
   render() {
     return (
       <div>
+        <div className="logoContainer">
+          <img src="features/auth/assets/logo.png" className="logo" />
+        </div>
         <form>
           <div className="form-group">
-            <label>Email address</label>
             <input type="email" ref="email" className="form-control" placeholder="Email" />
           </div>
           <div className="form-group">
-            <label>Password</label>
             <input type="password" ref="password" className="form-control" placeholder="Password" />
           </div>
           <div className="form-actions">
             <button type="submit"
-              className="btn btn-form btn-default">Cancel</button>
-            <button type="submit"
               onClick={::this.handleLogin}
-              className="btn btn-form btn-primary">OK</button>
+              className="btn btn-form btn-primary loginButton">{ this.state.loginMessage }</button>
+          </div>
+          <div className="form-actions createAccount">
+            <p className="title">
+              <a href="#" onClick={ ::this.handleStateChange }>{ this.state.registerMessage }</a>
+            </p>
           </div>
         </form>
       </div>
