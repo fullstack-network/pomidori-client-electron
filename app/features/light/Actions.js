@@ -9,7 +9,6 @@ function turnOnLight(minutes, workingState) {
 
     if (workingState === "break") {
       color = 'green';
-      
     }
 
     // TODO: Warn the user that the device is not connected
@@ -21,8 +20,6 @@ function turnOnLight(minutes, workingState) {
       const interval = ms / ledCount
 
       function* startStopTaskLeds(i) {
-        console.log(`inside generator ${i}`)
-
         if (i == 0) {
           client.authenticatedPost('/task', { taskTime: minutes }).then((data) => {
             console.log(data);
