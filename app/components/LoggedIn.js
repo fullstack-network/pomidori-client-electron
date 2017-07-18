@@ -6,8 +6,9 @@ export default class LoggedIn extends Component {
 
     this.state = {
       workingState: "work",
-      minutes: "1",
+      minutes: "25",
       seconds: "00",
+      percentage: "100%"
     }
   }
 
@@ -15,9 +16,13 @@ export default class LoggedIn extends Component {
     this.props.turnOnLight(this.state.minutes, this.state.workingState);
 
     let time = this.state.minutes * 60 * 1000;
+    let totalTime = time;
 
     setInterval(() => {
       time = time - 1000;
+
+      let ratio = Math.floor((time / totalTime) * 100);
+      let percentage = `${ratio}%`;
 
       let minutes = Math.floor(time / (60 * 1000));
       let seconds = Math.floor((time - (minutes * 60 * 1000)) / 1000);
@@ -27,6 +32,7 @@ export default class LoggedIn extends Component {
       this.setState({
         minutes,
         seconds,
+        percentage,
       })
 
     }, 1000);
@@ -68,6 +74,9 @@ export default class LoggedIn extends Component {
           <div className="display">
             <div className="minutes">{this.state.minutes}</div>
             <div className="seconds">{this.state.seconds}</div>
+          </div>
+          <div className="filler" style={{top: this.state.percentage}}>
+
           </div>
         </div>
         <div className="buttons">

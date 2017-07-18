@@ -25,6 +25,25 @@
   transition: background 0.25s ease;
 }
 
+.filler {
+  z-index: 40;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 100%;
+  right: 0px;
+}
+
+.work .filler {
+  background-color: #e23f42;
+  border: 15px #e23f42 solid;
+}
+
+.break .filler {
+  background-color: #5daa40;
+  border: 15px #5daa40 solid;
+}
+
 .break {
   background-color: #8BC34A;
   transition: background 0.25s ease;
@@ -73,16 +92,21 @@
 }
 
 .clock {
+  overflow: hidden;
   cursor: pointer;
   padding-top: 50px;
   width: 300px;
   margin: 0 auto;
   border-radius: 200px;
   border: 15px #fcfcfc solid;
-  height: 300px
+  height: 300px;
+  position: relative;
+
 }
 
 .clock .display {
+  position: relative;
+  z-index: 100;
   cursor: pointer;
   display: flex;           /* establish flex container */
   flex-direction: row;  /* make main axis vertical */
